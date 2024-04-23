@@ -21,10 +21,9 @@ public class LibraryController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{id}")]
     [ProducesResponseType(typeof(ResponseAllBooksJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult GetAll([FromRoute] int id, [FromBody] RequestRegisterBookJson request)
+    public IActionResult GetAll([FromBody] RequestRegisterBookJson request)
     {
         if (request == null)
         {
@@ -33,6 +32,22 @@ public class LibraryController : ControllerBase
         {
             return Ok();
         }
+    }
+
+    [HttpPut]
+    [ProducesResponseType(typeof(ResponseAllBooksJson), StatusCodes.Status200OK)]
+    [Route("{id}")]
+    public IActionResult Update([FromRoute] int id, [FromBody] ResponseShortBookJson request)
+    {
+        return Ok();
+    }
+
+    [HttpDelete]
+    [ProducesResponseType(typeof(ResponseAllBooksJson), StatusCodes.Status200OK)]
+    [Route("{id}")]
+    public IActionResult Delete([FromRoute] int id, [FromBody] ResponseShortBookJson request)
+    {
+        return Ok();
     }
 
 }
